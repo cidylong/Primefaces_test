@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <h:form id="contractitemeditform">
+        <p:panelGrid id="contractitem" styleClass="fc-view" style="width: auto">
+            <f:facet name="header">
+                <p:row>
+                    <p:column colspan="3">#{contractPackTabView.contractPack.currentItem.itemName}'s Contract item Edit</p:column>
+                </p:row>
+            </f:facet>
+            <p:row>
+                <p:column ><p:outputLabel for="id" value="Id"/></p:column>
+                <p:column colspan="2"><h:outputText  id="id" value="#{contractPackTabView.contractPack.currentItem.contractItemId}"/></p:column>
+            </p:row>
+
+            <p:row>
+                <p:column ><p:outputLabel for="to" value="contract Id"/></p:column>
+                <p:column colspan="2"><h:outputText  id="to" value="#{contractPackTabView.contractPack.currentItem.contractId}"/></p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="feeder" value="Item Name"/></p:column>
+                <p:column colspan="2"><p:inputText  id="feeder" value="#{contractPackTabView.contractPack.currentItem.itemName}"/></p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="rparty" value="Weekly Rate"/></p:column>
+                <p:column colspan="2"><p:inputText  id="rparty" value="#{contractPackTabView.contractPack.currentItem.weeklyRate}"/></p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="start" value="Start date"/></p:column>
+                <p:column colspan="2">
+                    <p:calendar id="start" value="#{contractPackTabView.contractPack.currentItem.itemStart}" required="true" pattern="dd/MM/yyyy" mode="popup" showOn="button">
+                        <!--<p:ajax event="dateSelect" listener="#{contractitemSWController.onDateSelect}" update="@all" />-->
+                    </p:calendar>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="event" value="Terminated On"/></p:column>
+                <p:column colspan="2">
+                    <p:calendar id="event" value="#{contractPackTabView.contractPack.currentItem.itemTerminate}">
+                        <!--<p:ajax event="dateSelect" listener="#{contractSWController.onTerminateDateSelectedForContractItem}" update="msgs terminateBtn"/>-->
+                    </p:calendar>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="upto" value="Paid up to"/></p:column>
+                <p:column colspan="2">
+                    <p:calendar id="upto" value="#{contractPackTabView.contractPack.currentItem.itemPaidUpto}">
+                        <!--<p:ajax event="dateSelect" listener="#{contractSWController.onTerminateDateSelectedForContractItem}" update="msgs terminateBtn"/>-->
+                    </p:calendar>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column ><p:outputLabel for="status" value="Status"/></p:column>
+                <p:column colspan="2">
+                    <p:selectOneMenu id="status" value="#{contractPackTabView.contractPack.currentItem.itemStatus}" required="true" editable="true"
+                                     requiredMessage="Please select an available option." hideNoSelectionOption="true">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <f:selectItem itemLabel="New" itemValue="New"/>
+                        <f:selectItem itemLabel="Active" itemValue="Active"/>
+                        <f:selectItem itemLabel="Terminate" itemValue="Terminated"/>
+                        <p:ajax process="@this"/>
+                    </p:selectOneMenu>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </h:form>
+</f:view>
+</html>

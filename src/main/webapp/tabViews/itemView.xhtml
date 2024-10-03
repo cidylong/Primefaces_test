@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid"
+                 styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent;">
+        <f:facet name="header">
+            <p:row styleClass="my-heading-row">
+                <p:column colspan="2">
+                    <h:outputText value="#{contractPackTabView.contractPack.currentItem.itemName}"/>
+                </p:column>
+            </p:row>
+        </f:facet>
+
+        <p:outputLabel for="id" value="Id" />
+        <h:outputText id="id" value="#{contractPackTabView.contractPack.currentItem.contractItemId}"/>
+        <p:outputLabel for="feeder" value="Contract Id" />
+        <h:outputText id="feeder" value="#{contractPackTabView.contractPack.currentItem.contractId}"/>
+
+        <p:outputLabel for="title" value="Item Name" />
+        <h:outputText id="title" value="#{contractPackTabView.contractPack.currentItem.itemName}"/>
+        <p:outputLabel for="message" value="Weekly Rate" />
+        <h:outputText id="message" value="#{contractPackTabView.contractPack.currentItem.weeklyRate}"/>
+
+        <p:outputLabel for="created" value="Start date" />
+        <h:outputText id="created" value="#{contractPackTabView.contractPack.currentItem.itemStart}">
+            <f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+        </h:outputText>
+        <p:outputLabel for="terminated" value="Terminated on" />
+        <h:outputText id="terminated" value="#{contractPackTabView.contractPack.currentItem.itemTerminate}">
+            <f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+        </h:outputText>
+        <p:outputLabel for="paidupto" value="Paid upto" />
+        <h:outputText id="paidupto" value="#{contractPackTabView.contractPack.currentItem.itemPaidUpto}">
+            <f:convertDateTime type="localDate" pattern="dd-MM-yyyy" />
+        </h:outputText>
+        <p:outputLabel for="status" value="Status" />
+        <h:outputText id="status" value="#{contractPackTabView.contractPack.currentItem.itemStatus}"/>
+    </p:panelGrid>
+</f:view>
+</html>

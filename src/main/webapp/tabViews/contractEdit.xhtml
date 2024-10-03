@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="primefaces"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <div class="card">
+        <p:panelGrid id="contractGrid">
+            <f:facet name="header">
+                <p:row><p:column colspan="6">
+                    #{contractPackTabView.contractPack.contract.contractHolderId}'s contract - #{contractPackTabView.contractPack.contract.contractContent}</p:column>
+                </p:row>
+                <p:row>
+                    <p:column ><p:outputLabel for="id" value="Contract id:"/></p:column>
+                    <p:column colspan="2"><h:outputText id="id" value="#{contractPackTabView.contractPack.contract.contractId}"/></p:column>
+                    <p:column ><p:outputLabel for="body" value="Host Id:"/></p:column>
+                    <p:column colspan="2"><p:inputText id="body" value="#{contractPackTabView.contractPack.contract.contractHostId}"/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column ><p:outputLabel for="holderid" value="Contract Holder id:"/></p:column>
+                    <p:column colspan="2"><p:inputText id="holderid" value="#{contractPackTabView.contractPack.contract.contractHolderId}"/></p:column>
+                    <p:column ><p:outputLabel for="content" value="Contract content:"/></p:column>
+                    <p:column colspan="2"><p:inputText id="content" value="#{contractPackTabView.contractPack.contract.contractContent}"/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column ><p:outputLabel for="start" value="Contract start at:"/></p:column>
+                    <p:column colspan="2">
+                        <p:calendar id="start" value="#{contractPackTabView.contractPack.contract.contractHolderId}" pattern="dd/MM/yyyy" mode="popup" showOn="button"/>
+                    </p:column>
+                    <p:column ><p:outputLabel for="finish" value="Contract finish on:"/></p:column>
+                    <p:column colspan="2">
+                        <p:calendar id="finish" value="#{contractPackTabView.contractPack.contract.contractContent}" pattern="dd/MM/yyyy" mode="popup" showOn="button"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column ><p:outputLabel for="rate" value="Contracted rate:"/></p:column>
+                    <p:column colspan="2">
+                        <p:inputText id="rate" value="#{contractPackTabView.contractPack.contract.contractedRate}"/>
+                    </p:column>
+                    <p:column ><p:outputLabel for="status" value="Contract status:"/></p:column>
+                    <p:column colspan="2">
+                        <p:inputText id="status" value="#{contractPackTabView.contractPack.contract.status}"/>
+                    </p:column>
+                </p:row>
+            </f:facet>
+        </p:panelGrid>
+    </div>
+</f:view>
+</html>

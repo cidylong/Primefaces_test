@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="primefaces"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <p:dataTable id="contractitemlist" var="contractitem" value="#{contractPackTabView.contractPack.contractItemSet}" rows="20" paginator="true"  tableStyle="width:auto" resizableColumns="true" liveResize="true">
+        <f:facet name="header">Size of contract item: #{contractPackTabView.contractPack.contractItemSet.size()}</f:facet>
+        <p:column headerText="Contract Item Id">
+            <h:outputText value="#{contractitem.contractItemId}"/>
+        </p:column>
+        <p:column headerText="Contract Id">#{contractitem.contractId}</p:column>
+        <p:column headerText="Item Name">#{contractitem.itemName}</p:column>
+        <p:column headerText="Weekly Rate">
+            <h:outputText value="#{contractitem.weeklyRate}">
+                <f:convertNumber currencyCode="AUD" currencySymbol="$" type="currency" /></h:outputText>
+        </p:column>
+        <p:column headerText="Start date">
+            <h:outputText value="#{contractitem.itemStart}">
+                <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" /></h:outputText>
+        </p:column>
+        <p:column headerText="Terminated on">
+            <h:outputText value="#{contractitem.itemTerminate}">
+                <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" /></h:outputText>
+        </p:column>
+        <p:column headerText="Paid up to">
+            <h:outputText value="#{contractitem.itemPaidUpto}">
+                <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" /></h:outputText>
+        </p:column>
+        <p:column headerText="Status">#{contractitem.itemStatus}</p:column>
+    </p:dataTable>
+</f:view>
+</html>

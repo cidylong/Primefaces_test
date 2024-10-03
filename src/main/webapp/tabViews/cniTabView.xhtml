@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="primefaces"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Contract Pack Details TabView</title>
+</h:head>
+<f:view>
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+        <div class="card">
+            <p:tabView id="contract_tabview">
+                <p:ajax event="tabChange" listener="#{contractPackTabView.onTabChange}" update=":form:msgs"/>
+                <p:ajax event="tabClose" listener="#{contractPackTabView.onTabClose}" update=":form:msgs"/>
+                <p:tab id="contract_Tab_Edit" title="Contract Details - Edit" rendered="#{contractPackTabView.contractPack.contract != null and contractPackTabView.contractEditViewMode}">
+                    <ui:include src="contractEdit.xhtml"/>
+                </p:tab>
+                <p:tab id="contract_Tab_View" title="Contract Details - View" rendered="#{contractPackTabView.contractPack.contract != null and not contractPackTabView.contractEditViewMode}">
+                    <ui:include src="contractEdit.xhtml"/>
+                </p:tab>
+                <p:tab id="item_list" title="Contract Item List" rendered="#{contractPackTabView.contractPack.contractItemSet != null and contractPackTabView.contractPack.contractItemSet.size() gt 0}">
+                    <ui:include src="itemList.xhtml"/>
+                </p:tab>
+                <p:tab id="item_edit" title="Contract Item - Edit" rendered="#{contractPackTabView.contractPack.currentItem != null and contractPackTabView.contractItemEditViewMode}">
+                    <ui:include src="itemEdit.xhtml"/>
+                </p:tab>
+                <p:tab id="item_view" title="Contract Item - View" rendered="#{contractPackTabView.contractPack.currentItem != null and not contractPackTabView.contractItemEditViewMode}">
+                    <ui:include src="itemView.xhtml"/>
+                </p:tab>
+            </p:tabView>
+        </div>
+    </h:form>
+</f:view>
+</html>

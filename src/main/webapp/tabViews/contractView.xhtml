@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="primefaces"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                 layout="grid"
+                 styleClass="ui-panelgrid-blank ui-fluid"
+                 style="border:0px none; background-color:transparent;">
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="4">
+                    <h:outputText value="Contract for #{contractPackTabView.contractPack.contract.contractContent}"/>
+                </p:column>
+            </p:row>
+        </f:facet>
+        <p:outputLabel style="font: bold" for="id" value="ID: " />
+        <h:outputText id="id" value="#{contractPackTabView.contractPack.contract.contractId}"/>
+        <p:outputLabel for="created" value="Host Id:" />
+        <h:outputText id="created" value="#{contractPackTabView.contractPack.contract.contractHostId}"><f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm:ss" /></h:outputText>
+
+        <p:outputLabel for="deposit" value="Holder Id:" />
+        <h:outputText id="deposit" value="#{contractPackTabView.contractPack.contract.contractHolderId}"/>
+        <p:outputLabel for="desc" value="Content" />
+        <h:outputText id="desc" value="#{contractPackTabView.contractPack.contract.contractContent}"/>
+
+        <p:outputLabel for="start" value="Contract start at:" />
+        <h:outputText id="start" value="#{contractPackTabView.contractPack.contract.startDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
+        <p:outputLabel for="finish" value="Contract Finish on:" />
+        <h:outputText id="finish" value="#{contractPackTabView.contractPack.contract.finishDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
+
+
+        <p:outputLabel for="rate" value="Contracted rate:" />
+        <h:outputText id="rate" value="#{contractPackTabView.contractPack.contract.contractedRate}"><f:convertNumber currencySymbol="$" type="currency" /></h:outputText>
+        <p:outputLabel for="summary" value="Status" />
+        <h:outputText id="summary" value="#{contractPackTabView.contractPack.contract.status}">
+        </h:outputText>
+    </p:panelGrid>
+</f:view>
+</html>
