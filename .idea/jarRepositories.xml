@@ -2,14 +2,29 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="my-jersey" />
+      <option name="name" value="payara_jersey" />
+      <option name="url" value="https://nexus.payara.fish/repository/payara-artifacts/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="my-face" />
+      <option name="name" value="payara_faces" />
+      <option name="url" value="https://nexus.payara.fish/repository/payara-artifacts/org/glassfish/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="sonatype-snapshots" />
       <option name="name" value="Sonatype Snapshot Repository" />
       <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="my-face" />
+      <option name="name" value="payara-face" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.glassfish/jakarta.faces/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -20,6 +35,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="my-jersey" />
+      <option name="name" value="payara_jersey" />
+      <option name="url" value="https://mvnrepository.com/artifact/org.glassfish.jersey.containers" />
     </remote-repository>
   </component>
 </project>

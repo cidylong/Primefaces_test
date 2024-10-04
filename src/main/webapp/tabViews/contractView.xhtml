@@ -18,27 +18,31 @@
                 </p:column>
             </p:row>
         </f:facet>
-        <p:outputLabel style="font: bold" for="id" value="ID: " />
-        <h:outputText id="id" value="#{contractPackTabView.contractPack.contract.contractId}"/>
-        <p:outputLabel for="created" value="Host Id:" />
-        <h:outputText id="created" value="#{contractPackTabView.contractPack.contract.contractHostId}"><f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm:ss" /></h:outputText>
-
-        <p:outputLabel for="deposit" value="Holder Id:" />
-        <h:outputText id="deposit" value="#{contractPackTabView.contractPack.contract.contractHolderId}"/>
-        <p:outputLabel for="desc" value="Content" />
-        <h:outputText id="desc" value="#{contractPackTabView.contractPack.contract.contractContent}"/>
-
-        <p:outputLabel for="start" value="Contract start at:" />
-        <h:outputText id="start" value="#{contractPackTabView.contractPack.contract.startDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
-        <p:outputLabel for="finish" value="Contract Finish on:" />
-        <h:outputText id="finish" value="#{contractPackTabView.contractPack.contract.finishDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
-
-
-        <p:outputLabel for="rate" value="Contracted rate:" />
-        <h:outputText id="rate" value="#{contractPackTabView.contractPack.contract.contractedRate}"><f:convertNumber currencySymbol="$" type="currency" /></h:outputText>
-        <p:outputLabel for="summary" value="Status" />
-        <h:outputText id="summary" value="#{contractPackTabView.contractPack.contract.status}">
-        </h:outputText>
+        <p:row>
+            <p:outputLabel style="font: bold" for="id" value="ID: " />
+            <h:outputText id="id" value="#{contractPackTabView.contractPack.contract.contractId}"/>
+            <p:outputLabel for="created" value="Host Id:" />
+            <h:outputText id="created" value="#{contractPackTabView.contractPack.contract.contractHostId}"><f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm:ss" /></h:outputText>
+        </p:row>
+        <p:row>
+            <p:outputLabel for="deposit" value="Holder Id:" />
+            <h:outputText id="deposit" value="#{contractPackTabView.contractPack.contract.contractHolderId}"/>
+            <p:outputLabel for="desc" value="Content" />
+            <h:outputText id="desc" value="#{contractPackTabView.contractPack.contract.contractContent}"/>
+        </p:row>
+        <p:row>
+            <p:outputLabel for="start" value="Contract start at:" />
+            <h:outputText id="start" value="#{contractPackTabView.contractPack.contract.startDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
+            <p:outputLabel for="finish" value="Contract Finish on:" />
+            <h:outputText id="finish" value="#{contractPackTabView.contractPack.contract.finishDate}"><f:convertDateTime type="localDate" pattern="dd-MM-yyyy" /></h:outputText>
+        </p:row>
+        <p:row>
+            <p:outputLabel for="rate" value="Contracted rate:" />
+            <h:outputText id="rate" value="#{contractPackTabView.contractPack.contract.contractedRate}"><f:convertNumber currencySymbol="$" type="currency" /></h:outputText>
+            <p:outputLabel for="summary" value="Status" />
+            <h:outputText id="summary" value="#{contractPackTabView.contractPack.contract.status}">
+            </h:outputText>
+        </p:row>
     </p:panelGrid>
 </f:view>
 </html>

@@ -1,10 +1,8 @@
-package org.primefaces.test;
+package com.longz.test.config;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.annotation.FacesConfig;
-
+import jakarta.enterprise.context.ApplicationScoped;
 @FacesConfig
 @ApplicationScoped
 public class PrimeFacesTestApplicationConfig {
-
 }

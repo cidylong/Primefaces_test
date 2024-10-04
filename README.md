@@ -1,47 +1,38 @@
 ![PrimeFaces icon](https://www.primefaces.org/wp-content/uploads/2016/10/prime_logo_new.png)
 
-# PrimeFaces Test
+# PrimeFaces TabView Test - To reproduce JSF1007 error.
 
-This is a sample maven project that uses <strong>Latest PrimeFaces Release</strong> version. If you have a PrimeFaces issue, please download or fork this project. Then, you should change these files by yourself so that PrimeFaces Team can see your problem. Finally, you can send a link or attach the project. <strong>Please make sure that project is runnable with the command below.</strong>
+This is a sample maven project that uses <strong>Latest PrimeFaces Release</strong> version (The original code is downloaded from PrimeFaces test package). It is used to reproduce PrimeFaces TabView issues when dynamic Tabs were used. Especially when conditional tabs with different <ui:include> that depends on different condition, that means based on exist backend bean conditions to render different include jsf view (**.xhtml) when it is need. 
+
+Any one can fork this code to test. <strong>Please make sure that project is runnable with the command below.</strong>
 
 You can execute the sample with <strong>mvn jetty:run</strong> command and hit <strong>http://localhost:8080/</strong> to run the page.
 
-### Jakarta EE10 Version
-***
+### Typical error information on Jetty:
 
-PrimeFaces Test is setup to run again Jakarta EE10 profile using Jetty 12. You can also use other versions with the available maven profiles: mojarra40, myfaces40
+com.sun.faces.util.Util checkIdUniqueness SEVERE: JSF1007: Duplicate component ID form:contract_tabview:id found in view.
 
-`mvn clean jetty:run -Pmojarra40`
+### Payara throws other error:
 
-`mvn clean jetty:run -Pmyfaces40`
+[2024-10-04T15:59:07.207+1000] [Payara 6.2024.9] [SEVERE] [faces.duplicate_component_id_error] [jakarta.enterprise.resource.webcontainer.faces.application] [tid: _ThreadID=97 _ThreadName=http-thread-pool::http-listener-1(5)] [timeMillis: 1728021547207] [levelValue: 1000] [[
+JSF1007: Duplicate component ID form:contract_tabview:id found in view.]]
+...............................
+[2024-10-04T15:59:07.210+1000] [Payara 6.2024.9] [SEVERE] [] [jakarta.enterprise.resource.webcontainer.faces.application] [tid: _ThreadID=97 _ThreadName=http-thread-pool::http-listener-1(5)] [timeMillis: 1728021547210] [levelValue: 1000] [[
 
-### Server Port
-***
+[2024-10-04T15:59:07.220+1000] [Payara 6.2024.9] [SEVERE] [] [jakarta.enterprise.resource.webcontainer.faces.application] [tid: _ThreadID=97 _ThreadName=http-thread-pool::http-listener-1(5)] [timeMillis: 1728021547220] [levelValue: 1000] [[
+Error Rendering View[/tabViews/cniTabView.xhtml]
+java.lang.IllegalStateException: Component ID form:contract_tabview:id has already been found in the view.
 
-By default the application runs on port 8080 but if you would like to use a different port you can pass `-Djetty.port=5000` like:
+Error code number is same: JSF1007
 
-`mvn clean jetty:run -Djetty.port=5000`
+## Note: for payara test case
 
+Have to comment out all Jetty related dependency and enable Payara related dependency.
 
-### JPA Lazy Datatable
-***
+## Discussion
 
-The branch `jpa` contains a PrimeFaces Test setup to run with JPA using the JPA LazyDatatable advanced example.
+From Payara exception we can see, Even in Jakarta EE-10, TabView not really support dynamic Tab generation (looks JSF not assign correct Tab component id for each possible Tab). If that's the case, that means, TabView Spec need expend to support this features in the future.
 
-### Legacy JSF Versions
-***
-
-The branch `javax` contains a PrimeFaces Test setup to run again Jakarta EE10 profile using Jetty 9. Per default the application uses Mojarra 2.3.x. 
-You can also use other versions with the available maven profiles: myfaces23, myfaces23next, mojarra23
-
-`mvn clean jetty:run -Pmyfaces23`
-
-`mvn clean jetty:run -Pmyfaces23next`
-
-`mvn clean jetty:run -Pmojarra23`
-
-### Visual Studio Code Quickstart
-***
-
-See the [quickstart guide for running in Visual Studio Code](./vscode-quickstart.md) for more information.
 # Primefaces_test
+
+Please comment and advise any work around is welcome!!!!!

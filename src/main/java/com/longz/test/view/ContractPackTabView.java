@@ -1,5 +1,7 @@
-package org.primefaces.test.view;
+package com.longz.test.view;
 
+import com.longz.test.model.Contract;
+import com.longz.test.model.ContractPack;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -8,8 +10,6 @@ import jakarta.inject.Named;
 import lombok.Data;
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
-import org.primefaces.test.model.Contract;
-import org.primefaces.test.model.ContractPack;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -33,7 +33,8 @@ public class ContractPackTabView implements Serializable {
     public void init() {
         contractEditViewMode = false;
         contractItemEditViewMode = false;
-        Contract contract = new Contract("contractId-1","hostId_1","PayerId_1","Contract about chairs hire.", LocalDate.now(),LocalDate.now().plusMonths(2),40.00,"New");
+        Contract contract = new Contract("contractId-1","hostId_1","PayerId_1","Contract about chairs hire.",
+                LocalDate.now(),LocalDate.now().plusMonths(2),40.00,"New");
         contractPack = new ContractPack(contract);
     }
     public void onTabChange(TabChangeEvent event){

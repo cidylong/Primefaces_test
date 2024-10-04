@@ -20,7 +20,7 @@
                     <ui:include src="contractEdit.xhtml"/>
                 </p:tab>
                 <p:tab id="contract_Tab_View" title="Contract Details - View" rendered="#{contractPackTabView.contractPack.contract != null and not contractPackTabView.contractEditViewMode}">
-                    <ui:include src="contractEdit.xhtml"/>
+                    <ui:include src="contractView.xhtml"/>
                 </p:tab>
                 <p:tab id="item_list" title="Contract Item List" rendered="#{contractPackTabView.contractPack.contractItemSet != null and contractPackTabView.contractPack.contractItemSet.size() gt 0}">
                     <ui:include src="itemList.xhtml"/>

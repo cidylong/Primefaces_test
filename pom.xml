@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.primefaces</groupId>
+    <groupId>com.longz</groupId>
     <artifactId>primefaces-test</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -12,14 +12,22 @@
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>12.0.14</jetty.version>
+        <payara.version>6.2024.9</payara.version>
+        <primefaces.version>14.0.5</primefaces.version>
         <jetty.port>8080</jetty.port>
     </properties>
     <dependencies>
+        <!--<dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>-->
         <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>14.0.5</version>
-            <classifier>jakarta</classifier>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.servlet</groupId>
@@ -37,6 +45,38 @@
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.1.0</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.glassfish/jakarta.faces -->
+        <!--<dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>4.0.7.payara-p1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-common</artifactId>
+            <version>3.1.7.payara-p1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>3.1.7.payara-p1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>3.1.7.payara-p1</version>
+            <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
+            <classifier>jakarta</classifier>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -61,6 +101,16 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <!--<repository>
+            <id>my-face</id>
+            <name>payara_faces</name>
+            <url>https://nexus.payara.fish/repository/payara-artifacts/org/glassfish/</url>
+        </repository>-->
+        <!--<repository>
+            <id>my-jersey</id>
+            <name>payara_jersey</name>
+            <url>https://nexus.payara.fish/repository/payara-artifacts/</url>
+        </repository>-->
     </repositories>
     <build>
         <plugins>
@@ -95,7 +145,6 @@
                 <artifactId>jetty-ee10-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <!-- see https://eclipse.dev/jetty/documentation/jetty-12/programming-guide/index.html#jetty-run-goal -->
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
@@ -131,7 +180,7 @@
         </resources>
     </build>
     <profiles>
-        <profile>
+        <!--<profile>
             <id>myfaces40</id>
             <dependencies>
                 <dependency>
@@ -145,7 +194,7 @@
                     <version>4.0.2</version>
                 </dependency>
             </dependencies>
-        </profile>
+        </profile>-->
         <profile>
             <id>mojarra40</id>
             <activation>
